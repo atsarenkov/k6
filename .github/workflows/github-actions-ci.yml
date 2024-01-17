@@ -1,0 +1,20 @@
+name: k6 cloud tests
+on: [push]
+jobs:
+  build:
+    name: Run k6 test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Run k6 cloud tests
+        uses: grafana/k6-action@v0.3.1
+        with:
+          filename: tests.ts
+          cloud: true
+          token: ${{ secrets.K6_CLOUD_API_TOKEN }}
+          flags: 
+            --env BASE_URL=${{ vars.PROD }} 
+            --env KEY=${{ secrets.KEY }} 
+            --env TOKEN=${{ secrets.TOKEN }} 
+            --env PROJECT_ID=${{ secrets.PROJECT_ID }}
