@@ -44,7 +44,7 @@ export const params = {
 };
 
 export default () => {
-  group('Board Functionality', () => { 
+  group('Trello Board Functionality', () => { 
     const body = JSON.stringify({
       name: boardName,
       prefs_permissionLevel: 'public',

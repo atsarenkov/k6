@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  tests:
+    image: grafana/k6:latest
+    environment:
+      - BASE_URL=${BASE_URL}
+      - KEY=${KEY}
+      - TOKEN=${TOKEN}
+    command: run /k6/tests.ts
+    volumes:
+      - ./:/k6
